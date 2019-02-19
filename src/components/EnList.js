@@ -37,10 +37,10 @@ class EnList extends Component{
     componentDidMount(){
         console.log(this.props.match.params.id)
       
-        axios.get('../homework'+this.props.match.params.id+'.csv')
+        axios.get('/homework'+this.props.match.params.id+'.csv')
         .then(res=>{
               
-          
+           
             var arys = res.data.split(/\r?\n|\r/);
           
             
