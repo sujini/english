@@ -17,7 +17,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/homwork/:id" component={EnList} />            
-           
+              <Route exact path="/homwork/:id/:id2" component={EnList} />           
+              <Route exact path="/homwork/:id/:id2/:id3" component={EnList} />          
             </Switch>
           </div>
         </HashRouter>

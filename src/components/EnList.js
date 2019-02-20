@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import EnListItem from './EnListItem';
 
+
 class EnList extends Component{
     
      
@@ -9,13 +10,14 @@ class EnList extends Component{
       
         lists:[],
         suffleLists:[],
-        drawerOpen: false
+        drawerOpen: false,
+        step:''
     }
     shuffle(){
        
         var suffleLists=[];
         for (var j=0; j<999; j++) {
-            var randomNum = Math.floor(Math.random() * 100);
+            var randomNum = Math.floor(Math.random() * this.state.lists.length);
             if(suffleLists.indexOf(randomNum) === -1) {
                 suffleLists.push(randomNum);
             
@@ -25,35 +27,52 @@ class EnList extends Component{
             }
         }
 
-        
-        var dd = this.state.lists.filter((post,index)=>{return (suffleLists.indexOf(index) !== -1)})
         this.setState({
-            suffleLists:dd,
+            suffleLists:this.state.lists.filter((post,index)=>{return (suffleLists.indexOf(index) !== -1)}),
             drawerOpen: false
         })
    
        
     }
     componentDidMount(){
-        console.log(this.props.match.params.id)
-      
-        axios.get('./homework'+this.props.match.params.id+'.csv')
-        .then(res=>{
-              
-           
-            var arys = res.data.split(/\r?\n|\r/);
-          
+        let arys = [],i=0,titlestep='';
+
+
+        Object.keys(this.props.match.params).map((key) =>{
+            let step = this.props.match.params[key];
             
-        
-            this.setState({
-                lists:arys
+           
+            axios.get('./homework'+step+'.csv')
+            .then(res=>{
+                                 
+                let ary = res.data.split(/\r?\n|\r/);
+                        
+                arys=arys.concat(ary)        
+                titlestep += (i!==0?'&':'')+step;
+                i++;
+             
+                this.setState({
+                    lists:arys,
+                    step:titlestep,
+                    suffleLists:arys
+                })
+                
+               
             })
-            this.setState({
-                suffleLists:arys
-            })
+            return step;
+
         })
+
+        
+        
+       
+      
+       
     }
-   
+    scrollTop(e){
+        window.scrollTo(0, 0);
+
+    }
   
     render(){
       
@@ -75,9 +94,20 @@ class EnList extends Component{
         );
         return(
             <div className="container homework">
-                <h4 className="center">과제</h4>                  
+                <h4 className="center">과제{this.state.step}</h4>                  
                 <button  onClick={this.shuffle.bind(this)}>shuffle 30</button>         
-                {englishList}
+                <div className="swiper-container">
+                    <div className="swiper-wrapper">
+                    {englishList}
+                    </div>
+                </div>
+                <div className="fixed-action-btn direction-top" style={{bottom: '25px', right: '24px'}} onClick={this.scrollTop}>
+                    <button className="btn-floating btn-large red">
+                        <i className="material-icons">top</i>
+                    </button>
+                
+                </div>
+                         
             </div>
         )
     }
