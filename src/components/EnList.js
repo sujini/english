@@ -121,12 +121,12 @@ class EnList extends Component{
         return(          
             <div className="container homework">
                 <div className="inner">
-                    <h1 className="center"><img src="/img/title.png" alt="나의 영어사춘기"/></h1>
-                    <h3 className="center"><img src="/img/text_homework.png" alt="과제"/><span className={`numL num${this.state.step}`}>{this.state.step}</span></h3>
+                    <h1 className="center"><img src="./img/title.png" alt="나의 영어사춘기"/></h1>
+                    <h3 className="center"><img src="./img/text_homework.png" alt="과제"/><span className={`numL num${this.state.step}`}>{this.state.step}</span></h3>
                     <Grammar showGrammar={showGrammar}/>   
                     <div className="btn-area">
-                        <button  onClick={this.shuffle.bind(this)}><img src="/img/btn_random.png" alt="나의 영어사춘기"/></button>
-                        <button  onClick={this.grammarClick}><img src="/img/btn_grammar.png" alt="문법"/></button>   
+                        <button  onClick={this.shuffle.bind(this)}><img src="./img/btn_random.png" alt="나의 영어사춘기"/></button>
+                        <button  onClick={this.grammarClick}><img src="./img/btn_grammar.png" alt="문법"/></button>   
                     </div>        
                     <div className="swiper-container">
                         <div className="swiper-wrapper card-list">

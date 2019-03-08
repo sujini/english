@@ -28,8 +28,8 @@ class Grammar extends Component{
             <div className={`popup grammar ${this.state.showGrammar?'active':''}`}>
                 <div className="pop_inner_wrap">
                 <div className="pop_inner">
-                    <a href="/" onClick={this.closePop} className="btn_close"><img src="/img/btn_close.png" alt="닫기"/></a>
-                    <h4 className=""><img src="/img/title_grammar.png" alt="봐도봐도 모르겠는 문-법"/></h4>
+                    <a href="/" onClick={this.closePop} className="btn_close"><img src="./img/btn_close.png" alt="닫기"/></a>
+                    <h4 className=""><img src="./img/title_grammar.png" alt="봐도봐도 모르겠는 문-법"/></h4>
                     <ul>                           
                         <li><span className="red-text en">I like -ing.</span></li>
                         <li><span className="red-text en">put somthing on/in/off.</span></li>
