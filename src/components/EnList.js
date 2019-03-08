@@ -60,7 +60,7 @@ class EnList extends Component{
             let step = _params[key];
 
            
-            axios.get('/homework'+step+'.csv')
+            axios.get('./homework'+step+'.csv')
             .then(res=>{
                                  
                 let ary = res.data.split(/\r?\n|\r/);
