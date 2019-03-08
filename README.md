@@ -41,3 +41,14 @@ npm install
 npm start
     
 ```
+
+## Screenshot
+![screenshot_20190308-172814](https://sujini.github.io/english/img/site_home.jpg)
+![screenshot_20190308-172814](https://sujini.github.io/english/img/site_homwork.jpg)
+
+## Design By
+
+변지현(ji hyun)
+UX/UI Designer
+bjoj91@naver.com 
+
