@@ -41,7 +41,7 @@ mark{background-color:#ff9;font-style:italic;font-weight:bold;color:#282828}
 del{text-decoration:line-through}
 abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
 hr{border-collapse:collapse}
-body,.wrap{background: url(../../img/bg_pattern.jpg) repeat}
+body,.wrap{background: url(https://sujini.github.io/english/img/bg_pattern.jpg) repeat}
 
 nav{position: absolute;top:0;left:0;right:0;}
 nav .nav-inner{position: relative;max-width: 1000px;margin: 0 auto;} 
@@ -83,20 +83,20 @@ img{max-width: 100%;}
 .card-list .card .card-content .card-inner a{font-size: 19px;font-weight: 800;letter-spacing: -0.6px;}
 .card-list .card .card-content .card-inner span.num{position: absolute;top:25px;left:0;width: 55px;text-align: right; font-size: 20px;font-weight: 800;letter-spacing: -0.6px;}
 .card-list .card .card-content .card-inner p{font-size: 18px;color:#e20000; padding: 12px 0; font-family: 'Gotham Bold';line-height: 24px;letter-spacing: -0.45px;}
-.container{background: url(../../img/bg_main.jpg) repeat-x center top;}
+.container{background: url(https://sujini.github.io/english/img/bg_main.jpg) repeat-x center top;}
 .container.home{min-height: 100vh}
-.container.homework{background-image: url(../../img/bg_homework.jpg)}
+.container.homework{background-image: url(https://sujini.github.io/english/img/bg_homework.jpg)}
 .container.homework button{margin: 0 10px 15px 0}
 .container .inner{padding: 110px 0 0;max-width: 1000px;margin: 0 auto;}
 .container .center{text-align: center}
 .container h1.center{max-width: 85%;margin: 0 auto}
 input[type="text"]{width: 100%;border:0;border-bottom:1px solid #bababa;height: 27px;line-height: 27px;background: transparent;}
-span.numL{background: url(../../img/num_l.png) no-repeat 50% -90px;text-indent: -9999em;width: 30px;height: 30px;display: inline-block;vertical-align: top; overflow: hidden;}
+span.numL{background: url(https://sujini.github.io/english/img/num_l.png) no-repeat 50% -90px;text-indent: -9999em;width: 30px;height: 30px;display: inline-block;vertical-align: top; overflow: hidden;}
 span.numL.num1{background-position: 50% 0px}
 span.numL.num2{background-position: 50% -30px}
 span.numL.num3{background-position: 50% -60px}
 span.numL.numR{background-position: 50% -90px}
-span.numS{background: url(../../img/num_s.png) no-repeat 50% -45px;text-indent: -9999em;width: 15px;height: 15px;display: inline-block;vertical-align: top; overflow: hidden;}
+span.numS{background: url(https://sujini.github.io/english/img/num_s.png) no-repeat 50% -45px;text-indent: -9999em;width: 15px;height: 15px;display: inline-block;vertical-align: top; overflow: hidden;}
 span.numS.num1{background-position: 50% 0px}
 span.numS.num2{background-position: 50% -15px}
 span.numS.num3{background-position: 50% -30px}
