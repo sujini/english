@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
 import {HashRouter,Route,Switch} from 'react-router-dom';
+import './App.css';
 import Home from './components/Home';
-import EnList from './components/EnList';
+import Homework from './components/Homework';
 
 
 class App extends Component {
   
   render() {
-    return (
-      <div className="App">
-      
-        <HashRouter>
-          <div className="App">
-            <Navbar/>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/homwork/:id" component={EnList} />            
-              <Route exact path="/homwork/:id/:id2" component={EnList} />           
-              <Route exact path="/homwork/:id/:id2/:id3" component={EnList} />          
-            </Switch>
-          </div>
-        </HashRouter>
+    return (      
+      <HashRouter>
+        <div className="wrap">
+          <Navbar/>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/homework/:id" component={Homework} />            
+            <Route exact path="/homework/:id/:id2" component={Homework} />           
+            <Route exact path="/homework/:id/:id2/:id3" component={Homework} />          
+          </Switch>
+        </div>
+      </HashRouter>
     
-      </div>
+
     );
   }
 }

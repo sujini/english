@@ -1,7 +1,7 @@
-import React,{Component} from 'react';
+import React,{Component,Fragment} from 'react';
 import axios from 'axios';
 import EnListItem from './EnListItem';
-
+import Grammar from './Grammar';
 
 class EnList extends Component{
     
@@ -11,7 +11,11 @@ class EnList extends Component{
         lists:[],
         suffleLists:[],
         drawerOpen: false,
+        showGrammar:false,
         step:''
+    }
+    setNum(_num){
+        return _num<10?'0'+_num:_num;
     }
     shuffle(){
        
@@ -29,20 +33,34 @@ class EnList extends Component{
 
         this.setState({
             suffleLists:this.state.lists.filter((post,index)=>{return (suffleLists.indexOf(index) !== -1)}),
-            drawerOpen: false
+            drawerOpen: false,
+            showGrammar:false
         })
    
        
     }
+    grammarClick=(e)=>{
+        e.preventDefault();
+      
+        this.setState({
+            showGrammar: true
+        })
+
+    }
     componentDidMount(){
-        let arys = [],i=0,titlestep='';
-
-
-        Object.keys(this.props.match.params).map((key) =>{
-            let step = this.props.match.params[key];
-            
            
-            axios.get('./homework'+step+'.csv')
+        this.setList(this.props.urlParams)
+
+    }
+    setList(_params){
+        let arys = [],i=0,titlestep='';
+      
+        Object.keys(_params).map((key) =>{
+            
+            let step = _params[key];
+
+           
+            axios.get('/homework'+step+'.csv')
             .then(res=>{
                                  
                 let ary = res.data.split(/\r?\n|\r/);
@@ -54,7 +72,8 @@ class EnList extends Component{
                 this.setState({
                     lists:arys,
                     step:titlestep,
-                    suffleLists:arys
+                    suffleLists:arys,
+                    showGrammar:false
                 })
                 
                
@@ -62,13 +81,20 @@ class EnList extends Component{
             return step;
 
         })
+    }
 
-        
-        
-       
       
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.urlParams!==this.props.urlParams){
+            this.setList(nextProps.urlParams)
+        }
+     
        
     }
+    
+     
+    
+    
     scrollTop(e){
         window.scrollTo(0, 0);
 
@@ -76,15 +102,15 @@ class EnList extends Component{
   
     render(){
       
-        const {suffleLists} = this.state;
+        const {suffleLists,drawerOpen,showGrammar} = this.state;
         
        
         const englishList = suffleLists.length?(
             suffleLists.map((post,index)=>{
                 let text = post.split('$');
-              
+               
                 return (
-                    <EnListItem text={text} key={index} drawerOpen={this.state.drawerOpen}/>         
+                    <EnListItem text={text} key={index} index={this.setNum(index+1)} drawerOpen={drawerOpen}/>         
                     
                 )
             
@@ -92,23 +118,31 @@ class EnList extends Component{
         ):(
             <div className="center">No lists yet</div>
         );
-        return(
+        return(          
             <div className="container homework">
-                <h4 className="center">과제{this.state.step}</h4>                  
-                <button  onClick={this.shuffle.bind(this)}>shuffle 30</button>         
-                <div className="swiper-container">
-                    <div className="swiper-wrapper">
-                    {englishList}
+                <div className="inner">
+                    <h1 className="center"><img src="/img/title.png" alt="나의 영어사춘기"/></h1>
+                    <h3 className="center"><img src="/img/text_homework.png" alt="과제"/><span className={`numL num${this.state.step}`}>{this.state.step}</span></h3>
+                    <Grammar showGrammar={showGrammar}/>   
+                    <div className="btn-area">
+                        <button  onClick={this.shuffle.bind(this)}><img src="/img/btn_random.png" alt="나의 영어사춘기"/></button>
+                        <button  onClick={this.grammarClick}><img src="/img/btn_grammar.png" alt="문법"/></button>   
+                    </div>        
+                    <div className="swiper-container">
+                        <div className="swiper-wrapper card-list">
+                        {englishList}
+                        </div>
                     </div>
-                </div>
-                <div className="fixed-action-btn direction-top" style={{bottom: '25px', right: '24px'}} onClick={this.scrollTop}>
-                    <button className="btn-floating btn-large red">
-                        <i className="material-icons">top</i>
-                    </button>
-                
-                </div>
-                         
+                    <div className="fixed-action-btn direction-top" style={{bottom: '25px', right: '24px'}} onClick={this.scrollTop}>
+                        <button className="btn-floating btn-large red">
+                            <i className="material-icons">top</i>
+                        </button>
+                    
+                    </div>
+                </div>   
             </div>
+      
+
         )
     }
 }
