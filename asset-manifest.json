@@ -1,14 +1,14 @@
 {
-  "main.css": "/english/static/css/main.b29e1300.chunk.css",
-  "main.js": "/english/static/js/main.bbcd4da8.chunk.js",
-  "main.js.map": "/english/static/js/main.bbcd4da8.chunk.js.map",
+  "main.css": "/english/static/css/main.31692d40.chunk.css",
+  "main.js": "/english/static/js/main.7e050ecf.chunk.js",
+  "main.js.map": "/english/static/js/main.7e050ecf.chunk.js.map",
   "runtime~main.js": "/english/static/js/runtime~main.293ecad8.js",
   "runtime~main.js.map": "/english/static/js/runtime~main.293ecad8.js.map",
   "static/js/2.e76adc72.chunk.js": "/english/static/js/2.e76adc72.chunk.js",
   "static/js/2.e76adc72.chunk.js.map": "/english/static/js/2.e76adc72.chunk.js.map",
   "index.html": "/english/index.html",
-  "precache-manifest.d43d8a1bd709c406c0f8becfc65f52bb.js": "/english/precache-manifest.d43d8a1bd709c406c0f8becfc65f52bb.js",
+  "precache-manifest.32ec6a0f1cacf1bd9fee169147be6188.js": "/english/precache-manifest.32ec6a0f1cacf1bd9fee169147be6188.js",
   "service-worker.js": "/english/service-worker.js",
-  "static/css/main.b29e1300.chunk.css.map": "/english/static/css/main.b29e1300.chunk.css.map",
+  "static/css/main.31692d40.chunk.css.map": "/english/static/css/main.31692d40.chunk.css.map",
   "static/media/App.css": "/english/static/media/Gotham-Bold.b51ec430.woff"
 }
