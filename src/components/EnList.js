@@ -121,7 +121,7 @@ class EnList extends Component{
         return(          
             <div className="container homework">
                 <div className="inner">
-                    <h1 className="center"><img src="./img/title.png" alt="나의 영어사춘기"/></h1>
+                   
                     <h3 className="center"><img src="./img/text_homework.png" alt="과제"/><span className={`numL num${this.state.step}`}>{this.state.step}</span></h3>
                     <Grammar showGrammar={showGrammar}/>   
                     <div className="btn-area">

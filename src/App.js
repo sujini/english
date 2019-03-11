@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
-import {HashRouter,Route,Switch} from 'react-router-dom';
+import {HashRouter} from 'react-router-dom';
 import './App.css';
-import Home from './components/Home';
-import Homework from './components/Homework';
 
+import DelayRoute from './components/DelayRoute';
 
 class App extends Component {
   
@@ -13,12 +12,8 @@ class App extends Component {
       <HashRouter>
         <div className="wrap">
           <Navbar/>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/homework/:id" component={Homework} />            
-            <Route exact path="/homework/:id/:id2" component={Homework} />           
-            <Route exact path="/homework/:id/:id2/:id3" component={Homework} />          
-          </Switch>
+          <DelayRoute/>
+          
         </div>
       </HashRouter>
     

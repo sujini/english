@@ -10,7 +10,7 @@ class Home extends Component{
         return (
             <div className="container home">
                 <div className="inner">
-                    <h1 className="center"><img src="./img/title.png" alt="나의 영어사춘기"/></h1>
+                   
                     <p className="center"><img src="./img/desc.png" alt="나의 영어사춘기"/></p>    
                     <ul>
                 

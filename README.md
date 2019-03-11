@@ -26,6 +26,7 @@ my-app/
       EnList.js
       EnListItem.js
       Home.js
+      Homework.js
       Navbar.js  
     App.css
     App.js
