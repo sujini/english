@@ -43,8 +43,8 @@ npm start
 ```
 
 ## Screenshot
-![site_home](https://sujini.github.io/english/img/site_home.jpg)
-![site_homwork](https://sujini.github.io/english/img/site_homwork.jpg)
+![site_home](./public/img/site_home.jpg)
+![site_homwork](./public/img/site_homwork.jpg)
 
 ## Design By
 
