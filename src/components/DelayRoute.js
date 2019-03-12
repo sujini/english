@@ -11,9 +11,9 @@ class DelayRoute extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("componentWillReceiveProps",this.props.location.pathname,nextProps.location.pathname);
+      
         this.setState({ shouldRender: false })
-        console.log(this.props,nextProps);
+     
         if (this.props.location.pathname!==nextProps.location.pathname) {
            
 
@@ -52,12 +52,7 @@ class DelayRoute extends Component {
         
   
     }
-    componentWillUnmount() {
-        console.log('componentWillMount');
-       
 
-    }
-  
     render() {
         return(
            <Switch>

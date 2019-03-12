@@ -2,7 +2,8 @@ import React,{Component,Fragment} from 'react';
 import axios from 'axios';
 import EnListItem from './EnListItem';
 import Grammar from './Grammar';
-
+import {connect} from 'react-redux';
+import {listRequest,suffle} from '../store/actions';
 class EnList extends Component{
     
      
@@ -18,21 +19,12 @@ class EnList extends Component{
         return _num<10?'0'+_num:_num;
     }
     shuffle(){
+
+        this.props.suffle(30);
        
-        var suffleLists=[];
-        for (var j=0; j<999; j++) {
-            var randomNum = Math.floor(Math.random() * this.state.lists.length);
-            if(suffleLists.indexOf(randomNum) === -1) {
-                suffleLists.push(randomNum);
-            
-                if (suffleLists.length === 30) {
-                    break;
-                }
-            }
-        }
+    
 
         this.setState({
-            suffleLists:this.state.lists.filter((post,index)=>{return (suffleLists.indexOf(index) !== -1)}),
             drawerOpen: false,
             showGrammar:false
         })
@@ -53,31 +45,18 @@ class EnList extends Component{
 
     }
     setList(_params){
-        let arys = [],i=0,titlestep='';
       
         Object.keys(_params).map((key) =>{
             
             let step = _params[key];
+            
+        
+            this.props.listRequest(step)
 
-           
-            axios.get('./homework'+step+'.csv')
-            .then(res=>{
-                                 
-                let ary = res.data.split(/\r?\n|\r/);
-                        
-                arys=arys.concat(ary)        
-                titlestep += (i!==0?'&':'')+step;
-                i++;
-             
-                this.setState({
-                    lists:arys,
-                    step:titlestep,
-                    suffleLists:arys,
-                    showGrammar:false
-                })
-                
-               
+            this.setState({
+                showGrammar:false
             })
+
             return step;
 
         })
@@ -86,6 +65,7 @@ class EnList extends Component{
       
     componentWillReceiveProps(nextProps) {
         if(nextProps.urlParams!==this.props.urlParams){
+            arys = [];
             this.setList(nextProps.urlParams)
         }
      
@@ -102,7 +82,10 @@ class EnList extends Component{
   
     render(){
       
-        const {suffleLists,drawerOpen,showGrammar} = this.state;
+        const {suffleLists,titlestep} = this.props;
+
+        const {drawerOpen,showGrammar} = this.state;
+
         
        
         const englishList = suffleLists.length?(
@@ -122,7 +105,7 @@ class EnList extends Component{
             <div className="container homework">
                 <div className="inner">
                    
-                    <h3 className="center"><img src="./img/text_homework.png" alt="과제"/><span className={`numL num${this.state.step}`}>{this.state.step}</span></h3>
+                    <h3 className="center"><img src="./img/text_homework.png" alt="과제"/><span className={`numL num${titlestep}`}>{this.state.step}</span></h3>
                     <Grammar showGrammar={showGrammar}/>   
                     <div className="btn-area">
                         <button  onClick={this.shuffle.bind(this)}><img src="./img/btn_random.png" alt="나의 영어사춘기"/></button>
@@ -147,7 +130,59 @@ class EnList extends Component{
     }
 }
 
+let arys = [];
 
+const mapStateToProps = (state,ownProps) =>{
+   
+  
+    let res = state.enlist.data,num = state.enlist.num; 
+    let ary = res?String(res).split(/\r?\n|\r/):[];  
+    let i=0,titlestep='';
 
-export default EnList;
+    arys=arys.concat(ary);
 
+    
+    Object.keys(ownProps.urlParams).map(key => {
+        
+        let step = ownProps.urlParams[key];
+        titlestep += (i!==0?'&':'')+step;
+        i++;
+        return step;
+
+    })
+    let suffleLists=[];
+    if(num){
+        for (var j=0; j<999; j++) {
+            var randomNum = Math.floor(Math.random() * arys.length);
+            if(suffleLists.indexOf(randomNum) === -1) {
+                suffleLists.push(randomNum);
+            
+                if (suffleLists.length === num) {
+                    break;
+                }
+            }
+        }   
+    
+    }
+
+    
+    
+   
+    
+
+    return {
+        suffleLists:num?arys.filter((post,index)=>{return (suffleLists.indexOf(index) !== -1)}):arys,
+        titlestep:titlestep
+    }
+ 
+}
+const mapDispatchToProps = (dispatch) => {
+    
+    return {
+        listRequest: (step) => { dispatch(listRequest(step))},
+        suffle: (num) => { dispatch(suffle(num))}
+     
+    } 
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(EnList);

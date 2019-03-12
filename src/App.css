@@ -46,26 +46,24 @@ body,.wrap{background: url(https://sujini.github.io/english/img/bg_pattern.jpg) 
 nav{position: absolute;top:0;left:0;right:0;}
 nav .nav-inner{position: relative;max-width: 1000px;margin: 0 auto;} 
 nav .nav-inner .right{position: relative; float: right}
-nav .nav-inner ul.right>li{float: left;}
-nav .nav-inner ul.right>li>a{padding: 4px 15px;border-radius: 20px;margin: 18px 0 0 10px;
-  border: 2px solid #8f8f8f;background: #fff;transition: all 0.2s ease-out;-webkit-transition: all 0.2s ease-out;-moz-transition: all 0.2s ease-out;}
+nav .nav-inner ul.right>li{float: left;margin: 18px 0 0 10px;background: #fff;border-radius: 20px;border: 2px solid #8f8f8f;}
+nav .nav-inner ul.right>li>a{padding: 4px 15px;transition: all 0.2s ease-out;-webkit-transition: all 0.2s ease-out;-moz-transition: all 0.2s ease-out;}
 
-nav .nav-inner ul.right>li >a{ opacity: 0.5;transition: all 0.2s ease-out;-webkit-transition: all 0.2s ease-out;-moz-transition: all 0.2s ease-out;}
-nav .nav-inner ul.right>li a:hover,
-nav .nav-inner ul.right>li a.active{ opacity: 1;}
-nav .nav-inner ul.right>li a:hover,
-nav .nav-inner ul.right>li a.active{border-color:#000;}
+nav .nav-inner ul.right>li{ opacity: 0.5;transition: all 0.2s ease-out;-webkit-transition: all 0.2s ease-out;-moz-transition: all 0.2s ease-out;}
+nav .nav-inner ul.right>li:hover,
+nav .nav-inner ul.right>li.active{ opacity: 1;border-color:#000;}
+
 nav .nav-inner ul.right>li a{display: block;font-size: 0;}
 nav .nav-inner .sub-nav{height:0; overflow: hidden;transition: all 0.2s ease-out;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;}
-  nav .nav-inner .sub-nav li a{position: relative;}
-  nav .nav-inner .sub-nav li a:hover:after
-  ,nav .nav-inner .sub-nav li a.active:after{content: '';position: absolute;bottom:-4px;left:5px;right:5px;height: 2px;background: #000}
-  nav .nav-inner .sub-nav span.numS{vertical-align: middle}
-  nav .nav-inner .sub-nav li{padding: 7px 7px}
-nav .nav-inner ul.right>li a:hover .sub-nav
-,nav .nav-inner ul.right>li a.active .sub-nav{height:128px;padding: 10px 0}
+nav .nav-inner .sub-nav li a{position: relative;}
+nav .nav-inner .sub-nav li a:hover:after
+,nav .nav-inner .sub-nav li a.active:after{content: '';position: absolute;bottom:-4px;left:5px;right:5px;height: 2px;background: #000}
+nav .nav-inner .sub-nav span.numS{vertical-align: middle}
+nav .nav-inner .sub-nav li{padding: 7px 7px;text-align: center}
+nav .nav-inner ul.right>li:hover .sub-nav
+,nav .nav-inner ul.right>li.active .sub-nav{height:128px;padding: 10px 0}
 nav h1{position: absolute;left:0;right:0;top:100px;text-align: center;clear: both;}
 img{max-width: 100%;}
 .grammar{
@@ -137,8 +135,8 @@ span.numS.numR{background-position: 50% -45px}
   .card-list{max-width: 600px;    margin: 0 auto;}
   .card-list .card{width: 100%;padding: 0 10% 10px !important;}
   .container.homework .btn-area{text-align: center}
-  nav .nav-inner ul.right>li a:hover .sub-nav, nav .nav-inner ul.right>li a.active .sub-nav{height: 0;padding: 0}
-  nav .nav-inner ul.right>li a.on .sub-nav{height: 128px;padding: 10px 0}
+  nav .nav-inner ul.right>li:hover .sub-nav, nav .nav-inner ul.right>li.active .sub-nav{height: 0;padding: 0}
+  nav .nav-inner ul.right>li a.on+.sub-nav{height: 128px;padding: 10px 0}
 }
 
 @media (max-width: 600px) {
