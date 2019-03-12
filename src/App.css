@@ -59,7 +59,7 @@ nav .nav-inner .sub-nav{height:0; overflow: hidden;transition: all 0.2s ease-out
   -moz-transition: all 0.2s ease-out;}
 nav .nav-inner .sub-nav li a{position: relative;}
 nav .nav-inner .sub-nav li a:hover:after
-,nav .nav-inner .sub-nav li a.active:after{content: '';position: absolute;bottom:-4px;left:5px;right:5px;height: 2px;background: #000}
+,nav .nav-inner .sub-nav li a.active:after{content: '';position: absolute;bottom:-4px;left:15px;right:15px;height: 2px;background: #000}
 nav .nav-inner .sub-nav span.numS{vertical-align: middle}
 nav .nav-inner .sub-nav li{padding: 7px 7px;text-align: center}
 nav .nav-inner ul.right>li:hover .sub-nav

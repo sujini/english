@@ -20,7 +20,18 @@ class Navbar extends Component {
         }
         return bool?'active':'';
     }
+    componentDidMount(){
+        
+
+        
   
+    }
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
+       
+        this.setState({subNaviOn:false});
+       
+    }
     render() {
      
         return (      
