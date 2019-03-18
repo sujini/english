@@ -1,6 +1,5 @@
 import React from 'react';
 import EnList from './EnList';
-import {  withRouter } from "react-router-dom"; 
  
 const Homework = (props) =>{
   return(
@@ -10,4 +9,4 @@ const Homework = (props) =>{
   )
 }
  
-export default withRouter(Homework)
+export default Homework

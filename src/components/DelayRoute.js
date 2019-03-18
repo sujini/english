@@ -46,12 +46,7 @@ class DelayRoute extends Component {
         return nextState.shouldRender;
 
     }
-    componentDidMount(){
-        
 
-        
-  
-    }
 
     render() {
         return(
