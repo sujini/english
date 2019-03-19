@@ -63,7 +63,7 @@ nav .nav-inner .sub-nav li a:hover:after
 nav .nav-inner .sub-nav span.numS{vertical-align: middle}
 nav .nav-inner .sub-nav li{padding: 7px 7px;text-align: center}
 nav .nav-inner ul.right>li:hover .sub-nav
-,nav .nav-inner ul.right>li.active .sub-nav{height:128px;padding: 10px 0}
+,nav .nav-inner ul.right>li.active .sub-nav{height:100%;padding: 10px 0}
 nav h1{position: absolute;left:0;right:0;top:100px;text-align: center;clear: both;}
 img{max-width: 100%;}
 .grammar{
@@ -89,16 +89,22 @@ img{max-width: 100%;}
 .container .center{text-align: center}
 h1.center{max-width: 85%;margin: 0 auto}
 input[type="text"]{width: 100%;border:0;border-bottom:1px solid #bababa;height: 27px;line-height: 27px;background: transparent;}
-span.numL{background: url(https://sujini.github.io/english/img/num_l.png) no-repeat 50% -90px;text-indent: -9999em;width: 30px;height: 30px;display: inline-block;vertical-align: top; overflow: hidden;}
+span.numL{background: url(https://sujini.github.io/english/img/num_l.png) no-repeat 50% -180px;text-indent: -9999em;width: 30px;height: 30px;display: inline-block;vertical-align: top; overflow: hidden;}
 span.numL.num1{background-position: 50% 0px}
 span.numL.num2{background-position: 50% -30px}
 span.numL.num3{background-position: 50% -60px}
-span.numL.numR{background-position: 50% -90px}
-span.numS{background: url(https://sujini.github.io/english/img/num_s.png) no-repeat 50% -45px;text-indent: -9999em;width: 15px;height: 15px;display: inline-block;vertical-align: top; overflow: hidden;}
+span.numL.num4{background-position: 50% -90px}
+span.numL.num5{background-position: 50% -120px}
+span.numL.num6{background-position: 50% -150px}
+span.numL.numR{background-position: 50% -180px}
+span.numS{background: url(https://sujini.github.io/english/img/num_s.png) no-repeat 50% -90px;text-indent: -9999em;width: 15px;height: 15px;display: inline-block;vertical-align: top; overflow: hidden;}
 span.numS.num1{background-position: 50% 0px}
 span.numS.num2{background-position: 50% -15px}
 span.numS.num3{background-position: 50% -30px}
-span.numS.numR{background-position: 50% -45px}
+span.numS.num4{background-position: 50% -45px}
+span.numS.num5{background-position: 50% -60px}
+span.numS.num6{background-position: 50% -75px}
+span.numS.numR{background-position: 50% -90px}
 .container.home p{padding: 35px 0}
 .container.home ul{text-align: left;margin-left:-24px;overflow: hidden;}
 .container.home ul li{float: left;border:4px solid #000;padding: 3px;box-sizing: border-box;border-radius: 20px;margin:10px 0 10px 24px;}

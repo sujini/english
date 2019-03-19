@@ -3,6 +3,7 @@ import EnListItem from './EnListItem';
 import Grammar from './Grammar';
 import {connect} from 'react-redux';
 import {listRequest,suffle} from '../store/actions';
+let arys = [];
 class EnList extends Component{
     
      
@@ -39,12 +40,12 @@ class EnList extends Component{
 
     }
     componentDidMount(){
-           
+        
         this.setList(this.props.urlParams)
 
     }
     setList(_params){
-      
+        arys = [];
         Object.keys(_params).map((key) =>{
             
             let step = _params[key];
@@ -63,8 +64,8 @@ class EnList extends Component{
 
       
     componentWillReceiveProps(nextProps) {
+        
         if(nextProps.urlParams!==this.props.urlParams){
-            arys = [];
             this.setList(nextProps.urlParams)
         }
      
@@ -129,7 +130,19 @@ class EnList extends Component{
     }
 }
 
-let arys = [];
+const getRand = (_ary,_len)=>{
+	var num = Math.floor(Math.random() * _len)	
+	if(_ary.indexOf(num) !== -1) {
+		return getRand(_ary,_len)
+    }else{
+		return num;
+    }
+}
+    
+
+
+
+   
 
 const mapStateToProps = (state,ownProps) =>{
    
@@ -150,19 +163,16 @@ const mapStateToProps = (state,ownProps) =>{
 
     })
     let suffleLists=[];
-    if(num){
-        for (var j=0; j<999; j++) {
-            var randomNum = Math.floor(Math.random() * arys.length);
-            if(suffleLists.indexOf(randomNum) === -1) {
-                suffleLists.push(randomNum);
+  
+    if(num){       
+        for (var j=0; j<num; j++) {
+            var randomNum = getRand(suffleLists,arys.length);
+            suffleLists.push(randomNum);
             
-                if (suffleLists.length === num) {
-                    break;
-                }
-            }
-        }   
+        }  
     
     }
+
 
     
     

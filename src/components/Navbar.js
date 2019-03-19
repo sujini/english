@@ -13,10 +13,10 @@ class Navbar extends Component {
     }
     getNavLinkClass = (path) => {
         let bool;
-        if(path=='/'){
-            bool = (this.props.location.pathname==path);
+        if(path==='/'){
+            bool = (this.props.location.pathname===path);
         }else{
-            bool = (this.props.location.pathname.indexOf(path)!=-1);
+            bool = (this.props.location.pathname.indexOf(path)!==-1);
         }
         return bool?'active':'';
     }
