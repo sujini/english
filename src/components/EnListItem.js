@@ -7,8 +7,7 @@ class EnListItem extends Component {
     state = {
         open:false,
         active:false,
-        text:'',
-        isChecked:this.props.checked
+        text:''
     }
     handleClick = (e) =>{
         e.preventDefault();
@@ -73,12 +72,7 @@ class EnListItem extends Component {
         );
     }
 }
-const mapStateToProps = (state,ownProps) =>{
-    return {
-        isChecked: state.enlist.isChecked
-    }
-  
-}
+
 const mapDispatchToProps = (dispatch) => {
     
     return {
@@ -88,5 +82,5 @@ const mapDispatchToProps = (dispatch) => {
     } 
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(EnListItem);
+export default connect(undefined,mapDispatchToProps)(EnListItem);
 

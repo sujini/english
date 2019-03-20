@@ -8,8 +8,6 @@ class EnList extends Component{
     
      
     state = {
-      
-        lists:[],
         suffleLists:[],
         drawerOpen: false,
         showGrammar:false,
@@ -45,7 +43,9 @@ class EnList extends Component{
     }
     componentDidMount(){
         
-        this.setList(this.props.urlParams)
+        this.setList(this.props.urlParams);
+
+        
 
     }
     setList(_params){
@@ -84,7 +84,7 @@ class EnList extends Component{
   
     render(){
       
-        const {suffleLists,titlestep,isChecked} = this.props;
+        const {suffleLists,titlestep} = this.props;
 
         const {drawerOpen,showGrammar} = this.state;
      
@@ -94,7 +94,7 @@ class EnList extends Component{
             suffleLists.map((text,index)=>{
 
                 return (
-                    <EnListItem text={text} key={text.key} checked={isChecked.indexOf(text.key)>-1} index={this.setNum(index+1)} drawerOpen={drawerOpen}/>         
+                    <EnListItem text={text} key={text.key} checked={text.isChecked} index={this.setNum(index+1)} drawerOpen={drawerOpen}/>         
                     
                 )
             
@@ -172,6 +172,7 @@ const mapStateToProps = (state,ownProps) =>{
         rObj.kr = aryText[0];
         rObj.en = aryText[1];
         rObj.key = step+'_'+i;
+        rObj.isChecked = state.enlist.isChecked.indexOf(rObj.key)>-1;
         return rObj;
      });
 
@@ -187,12 +188,11 @@ const mapStateToProps = (state,ownProps) =>{
     
     }
 
-
+    
 
     return {
         suffleLists:num?reformattedArray.filter((post,index)=>{return (suffleLists.indexOf(index) !== -1)}):reformattedArray,
-        titlestep:titlestep,
-        isChecked: state.enlist.isChecked
+        titlestep:titlestep
     }
  
 }
