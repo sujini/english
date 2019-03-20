@@ -66,7 +66,6 @@ class EnList extends Component{
 
       
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps.isChecked)
        
         if(nextProps.urlParams!==this.props.urlParams){
             this.setList(nextProps.urlParams)

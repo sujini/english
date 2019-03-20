@@ -82,8 +82,8 @@ img{max-width: 100%;}
 .card-list .card .card-content .card-inner span.num{position: absolute;top:25px;left:0;width: 55px;text-align: right; font-size: 20px;font-weight: 800;letter-spacing: -0.6px;}
 .card-list .card .card-content .card-inner p{font-size: 18px;color:#e20000; padding: 12px 0; font-family: 'Gotham Bold';line-height: 24px;letter-spacing: -0.45px;}
 .card-list .card .card-content .card-inner input[type="checkbox"]{position: absolute;top:10px;right:10px;border: 0;-webkit-appearance: none;}
-.card-list .card .card-content .card-inner input[type="checkbox"]:before{content:'';display: block; width:39px;height:39px;background:url('/img/ico_check.png') no-repeat center top;}
-.card-list .card .card-content .card-inner input[type="checkbox"]:checked:before{content:'';display: block; width:39px;height:39px;background-image:url('/img/ico_check_on.png')}
+.card-list .card .card-content .card-inner input[type="checkbox"]:before{content:'';display: block; width:39px;height:39px;background:url('https://sujini.github.io/english/img/ico_check.png') no-repeat center top;}
+.card-list .card .card-content .card-inner input[type="checkbox"]:checked:before{content:'';display: block; width:39px;height:39px;background-image:url('https://sujini.github.io/english/img/ico_check_on.png')}
 
 .container{background: url(https://sujini.github.io/english/img/bg_main.jpg) repeat-x center top;overflow: hidden;}
 .container.home{min-height: 100vh}
