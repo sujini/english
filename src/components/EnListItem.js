@@ -17,7 +17,7 @@ class EnListItem extends Component {
       
     }
     handleKeyUp = (e) =>{
-        var bool = this.props.text['en'].toLowerCase().replace(/ /gi, "") ===e.target.value.toLowerCase().replace(/ /gi, "");
+        let bool = this.props.text['en'].toLowerCase().replace(/ /gi, "") ===e.target.value.toLowerCase().replace(/ /gi, "");
         this.setState({
             open:bool,
             active:bool,
@@ -27,10 +27,8 @@ class EnListItem extends Component {
     handleCheck = (e)=>{
         let key = e.target.parentNode.dataset.key;
         if(e.target.checked ){
-            console.log('aa')
             this.props.addCheck(key);
         }else{
-            console.log('dd')
             this.props.removeCheck(key);
         }
        
@@ -52,7 +50,7 @@ class EnListItem extends Component {
     }
     render() {
        
-        var {text,index,checked} = this.props;
+        const {text,index,checked} = this.props;
       
         
         return (
