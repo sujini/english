@@ -30,3 +30,25 @@ export function suffle(num){
   }
 }
 
+
+export function addCheck(data){
+  return{
+    type:'ADD_CHECKED',
+    payload:{
+      
+      data:data
+
+    }
+  }
+}
+export function removeCheck(data){
+  return{
+    type:'REMOVE_CHECKED',
+    payload:{
+      
+      data:data
+
+    }
+  }
+}
+

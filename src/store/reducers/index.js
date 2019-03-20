@@ -1,7 +1,12 @@
 
 import { combineReducers } from 'redux'
 
-const enlist = (state = {}, action) => {
+const initState = {
+  
+  isChecked:[]
+}
+
+const enlist = (state = initState, action) => {
   switch (action.type){
 
     case 'LIST_REQUEST':
@@ -23,7 +28,20 @@ const enlist = (state = {}, action) => {
         pending: false,
         num: action.payload.num
       };
-  
+    case 'ADD_CHECKED':
+      let newChecked = [...state.isChecked,action.payload.data];
+      return {
+        ...state,
+        pending: false,
+        isChecked:newChecked
+      };
+      case 'REMOVE_CHECKED':
+      let newPosts2 = state.isChecked.filter(chk=>{return chk!==action.payload.data})
+      return {
+        ...state,
+        pending: false,
+        isChecked:newPosts2
+      };
     default:
       return state;
 

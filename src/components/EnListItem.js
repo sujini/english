@@ -1,11 +1,14 @@
 import React,{Component} from 'react';
+import {connect} from 'react-redux';
+import {addCheck,removeCheck} from '../store/actions';
 
 class EnListItem extends Component {
 
     state = {
         open:false,
         active:false,
-        text:''
+        text:'',
+        isChecked:this.props.checked
     }
     handleClick = (e) =>{
         e.preventDefault();
@@ -15,39 +18,75 @@ class EnListItem extends Component {
       
     }
     handleKeyUp = (e) =>{
-        var bool = this.props.text[1].toLowerCase().replace(/ /gi, "") ===e.target.value.toLowerCase().replace(/ /gi, "");
+        var bool = this.props.text['en'].toLowerCase().replace(/ /gi, "") ===e.target.value.toLowerCase().replace(/ /gi, "");
         this.setState({
             open:bool,
             active:bool,
             text:e.target.value
         })
     }
-    componentWillReceiveProps(props) {
-        this.setState({ open: props.drawerOpen,active: props.drawerOpen,text:'' })
+    handleCheck = (e)=>{
+        let key = e.target.parentNode.dataset.key;
+        if(e.target.checked ){
+            console.log('aa')
+            this.props.addCheck(key);
+        }else{
+            console.log('dd')
+            this.props.removeCheck(key);
+        }
+       
         
+       
+      
+
+    }
+    componentWillReceiveProps(nextProps) {
+        
+        this.setState({ 
+            open: nextProps.drawerOpen,active: nextProps.drawerOpen,text:''
+        })
 
     }
     componentDidMount(){
+        //console.log(this.props)
         
     }
     render() {
        
-        var {text,index} = this.props;
+        var {text,index,checked} = this.props;
+      
+        
         return (
             <div className="swiper-slide card">                       
                 <div className="card-content" >
-                    <div className="card-inner">
+                    <div className="card-inner" data-key = {text.key}>
                         <span className="num">{index}</span>
-                        <a href="/" onClick={this.handleClick} className="black-text" style={{display:'block',width:'100%'}}>{text[0]}</a>
-                        <p className="">{this.state.open?text[1]:null}</p>
+                        <a href="/" onClick={this.handleClick} className="black-text" style={{display:'block',width:'100%'}}>{text['kr']}</a>
+                        <p className="">{this.state.open?text['en']:null}</p>
                         <input type="text" onChange={this.handleKeyUp} placeholder="FILL IN THE ANSWER." className={this.state.active? 'blue-text': ''} value={this.state.text}/>
                         
-                
+                        <input type="checkbox" onChange={this.handleCheck.bind(this)} defaultChecked={checked}/>
+                       
                     </div>
                 </div>
             </div>
         );
     }
 }
+const mapStateToProps = (state,ownProps) =>{
+    return {
+        isChecked: state.enlist.isChecked
+    }
+  
+}
+const mapDispatchToProps = (dispatch) => {
+    
+    return {
+        addCheck: (num) => { dispatch(addCheck(num))},
+        removeCheck: (num) => { dispatch(removeCheck(num))}
+     
+    } 
+}
 
-export default EnListItem;
+export default connect(mapStateToProps,mapDispatchToProps)(EnListItem);
+

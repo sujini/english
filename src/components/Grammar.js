@@ -12,14 +12,14 @@ class Grammar extends Component{
             showGrammar:false
         })
         
-
+        this.props.callbackFromParent(false);
     }
-    componentWillReceiveProps(props){
-        if(props.showGrammar!==this.state.showGrammar){
-            this.setState({ showGrammar: props.showGrammar })
+    componentWillReceiveProps(nextProps){
+        if(nextProps.showGrammar!==this.props.showGrammar){
+            this.setState({ showGrammar: nextProps.showGrammar })
         }       
-
-    }
+        
+    } 
   
     render(){
   

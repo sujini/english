@@ -15,18 +15,22 @@ class EnList extends Component{
         showGrammar:false,
         step:''
     }
+    myCallback = (dataFromChild) => {
+        console.log(dataFromChild)
+        this.setState({ showGrammar: dataFromChild });
+    }
     setNum(_num){
         return _num<10?'0'+_num:_num;
     }
     shuffle(){
+        arys=[];
 
         this.props.suffle(30);
        
     
 
         this.setState({
-            drawerOpen: false,
-            showGrammar:false
+            drawerOpen: false
         })
    
        
@@ -53,9 +57,7 @@ class EnList extends Component{
         
             this.props.listRequest(step)
 
-            this.setState({
-                showGrammar:false
-            })
+            
 
             return step;
 
@@ -64,12 +66,13 @@ class EnList extends Component{
 
       
     componentWillReceiveProps(nextProps) {
-        
+        console.log(nextProps.isChecked)
+       
         if(nextProps.urlParams!==this.props.urlParams){
             this.setList(nextProps.urlParams)
         }
      
-       
+        
     }
     
      
@@ -82,18 +85,17 @@ class EnList extends Component{
   
     render(){
       
-        const {suffleLists,titlestep} = this.props;
+        const {suffleLists,titlestep,isChecked} = this.props;
 
         const {drawerOpen,showGrammar} = this.state;
-
-        
+     
+       
        
         const englishList = suffleLists.length?(
-            suffleLists.map((post,index)=>{
-                let text = post.split('$');
-               
+            suffleLists.map((text,index)=>{
+
                 return (
-                    <EnListItem text={text} key={index} index={this.setNum(index+1)} drawerOpen={drawerOpen}/>         
+                    <EnListItem text={text} key={text.key} checked={isChecked.indexOf(text.key)>-1} index={this.setNum(index+1)} drawerOpen={drawerOpen}/>         
                     
                 )
             
@@ -106,7 +108,7 @@ class EnList extends Component{
                 <div className="inner">
                    
                     <h3 className="center"><img src="./img/text_homework.png" alt="과제"/><span className={`numL num${titlestep}`}>{this.state.step}</span></h3>
-                    <Grammar showGrammar={showGrammar}/>   
+                    <Grammar callbackFromParent={this.myCallback} showGrammar={showGrammar}/>   
                     <div className="btn-area">
                         <button  onClick={this.shuffle.bind(this)}><img src="./img/btn_random.png" alt="나의 영어사춘기"/></button>
                         <button  onClick={this.grammarClick}><img src="./img/btn_grammar.png" alt="문법"/></button>   
@@ -131,7 +133,7 @@ class EnList extends Component{
 }
 
 const getRand = (_ary,_len)=>{
-	var num = Math.floor(Math.random() * _len)	
+	let num = Math.floor(Math.random() * _len)	
 	if(_ary.indexOf(num) !== -1) {
 		return getRand(_ary,_len)
     }else{
@@ -149,24 +151,37 @@ const mapStateToProps = (state,ownProps) =>{
   
     let res = state.enlist.data,num = state.enlist.num; 
     let ary = res?String(res).split(/\r?\n|\r/):[];  
-    let i=0,titlestep='';
+    let i=0,titlestep='',step='';
 
     arys=arys.concat(ary);
-
-    
+   
+   
     Object.keys(ownProps.urlParams).map(key => {
         
-        let step = ownProps.urlParams[key];
+        step = ownProps.urlParams[key];
         titlestep += (i!==0?'&':'')+step;
         i++;
         return step;
 
     })
+
+    let reformattedArray = arys.map(function(obj,i){ 
+      
+        var aryText = obj.split('$');
+    
+        var rObj = {};
+        rObj.kr = aryText[0];
+        rObj.en = aryText[1];
+        rObj.key = step+'_'+i;
+        return rObj;
+     });
+
+
     let suffleLists=[];
   
     if(num){       
         for (var j=0; j<num; j++) {
-            var randomNum = getRand(suffleLists,arys.length);
+            var randomNum = getRand(suffleLists,reformattedArray.length);
             suffleLists.push(randomNum);
             
         }  
@@ -174,14 +189,11 @@ const mapStateToProps = (state,ownProps) =>{
     }
 
 
-    
-    
-   
-    
 
     return {
-        suffleLists:num?arys.filter((post,index)=>{return (suffleLists.indexOf(index) !== -1)}):arys,
-        titlestep:titlestep
+        suffleLists:num?reformattedArray.filter((post,index)=>{return (suffleLists.indexOf(index) !== -1)}):reformattedArray,
+        titlestep:titlestep,
+        isChecked: state.enlist.isChecked
     }
  
 }
