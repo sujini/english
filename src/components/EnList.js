@@ -8,7 +8,6 @@ class EnList extends Component{
     
      
     state = {
-        suffleLists:[],
         drawerOpen: false,
         showGrammar:false,
         step:''
@@ -49,6 +48,7 @@ class EnList extends Component{
 
     }
     setList(_params){
+       
         arys = [];
         Object.keys(_params).map((key) =>{
             
@@ -66,6 +66,7 @@ class EnList extends Component{
 
       
     componentWillReceiveProps(nextProps) {
+        console.log(nextProps,this.props)
        
         if(nextProps.urlParams!==this.props.urlParams){
             this.setList(nextProps.urlParams)
@@ -140,17 +141,26 @@ const getRand = (_ary,_len)=>{
     }
 }
     
-
+const shuffleAry = (_ary,_num,_len)=>{
+    for (var j=0; j<_num; j++) {
+        var randomNum = getRand(_ary,_len);
+        _ary.push(randomNum);
+        
+    }  
+}
 
 
    
 
 const mapStateToProps = (state,ownProps) =>{
-   
+    //console.log(state,ownProps)
   
     let res = state.enlist.data,num = state.enlist.num; 
     let ary = res?String(res).split(/\r?\n|\r/):[];  
     let i=0,titlestep='',step='';
+    if(i===0){
+        arys = [];
+    }
 
     arys=arys.concat(ary);
    
@@ -180,12 +190,8 @@ const mapStateToProps = (state,ownProps) =>{
     let suffleLists=[];
   
     if(num){       
-        for (var j=0; j<num; j++) {
-            var randomNum = getRand(suffleLists,reformattedArray.length);
-            suffleLists.push(randomNum);
-            
-        }  
-    
+        
+        suffleLists=state.enlist.numAry;
     }
 
     
