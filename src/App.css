@@ -172,10 +172,12 @@ span.numS.numR{background-position: 50% -90px}
   .card-list .card .card-content .card-inner a{font-size: 15px;font-weight: 800;letter-spacing: -0.6px;}
   .card-list .card .card-content .card-inner span.num{top:14px;width: 32px;font-size: 16px}
   .card-list .card .card-content .card-inner p{font-size: 14px;line-height: 18px;padding: 5px 0;}
-
+  .card-list .card .card-content .card-inner input[type=checkbox]:before{width: 25px;height: 25px;background-size: 100%}
+  .card-list .card .card-content .card-inner input[type="checkbox"]:checked:before{width: 25px;height: 25px;background-size: 100%}
   .popup .pop_inner_wrap .pop_inner{padding: 20px 15px}
   .popup .pop_inner_wrap .pop_inner h4{padding: 30px 0 20px 0;max-width: 90%;margin: 0 auto}
   .popup .pop_inner_wrap .pop_inner .btn_close{width: 30px;top:10px;right:10px}
   .popup .pop_inner_wrap .pop_inner ul li{font-size: 13px;line-height: 18px}
   .popup .pop_inner_wrap .pop_inner ul li .en{font-size: 17px}
+  
 }
