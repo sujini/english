@@ -1,23 +1,6 @@
 
 import { combineReducers } from 'redux'
-const getRand = (_ary,_len)=>{
-	let num = Math.floor(Math.random() * _len)	
-	if(_ary.indexOf(num) !== -1) {
-		return getRand(_ary,_len)
-    }else{
-		return num;
-    }
-}
-    
-const shuffleAry = (_num,_len)=>{
-  var ary=[];
-    for (var j=0; j<_num; j++) {
-        var randomNum = getRand(ary,_len);
-        ary.push(randomNum);
-        
-    }  
-    return ary;
-}
+
 const initState = {
   
   checkedAry:[],

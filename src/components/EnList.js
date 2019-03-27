@@ -20,7 +20,7 @@ class EnList extends Component{
         return _num<10?'0'+_num:_num;
     }
     shuffle(){
-        arys=[];
+        arys = {step:[],data:[]};
 
         //this.props.suffle(30);
        
@@ -49,11 +49,12 @@ class EnList extends Component{
 
     }
     setList(_params){
-       
-       
-
-     
         console.log('setList',arys)
+       
+        this.setState({
+            suffleAry:[]
+        })
+        
         Object.keys(_params).map((key) =>{
             
             let step = _params[key];
@@ -180,17 +181,11 @@ const mapStateToProps = (state,ownProps) =>{
    
     if(ary && step.indexOf(state.enlist.step) !== -1 && arys['step'].indexOf(state.enlist.step) === -1){
      
-        arys['step']=arys['step'].concat(state.enlist.step);
-        
+        arys['step']=arys['step'].concat(state.enlist.step);        
         arys['data']=arys['data'].concat(ary);
-        
         
      }
    
-  
-    
-
-    
 
     return {
         enList:arys['data'],
