@@ -20,7 +20,8 @@ const shuffleAry = (_num,_len)=>{
 }
 const initState = {
   
-  isChecked:[]
+  checkedAry:[],
+  checkedAction:false
 }
 
 const enlist = (state = initState, action) => {
@@ -28,10 +29,13 @@ const enlist = (state = initState, action) => {
 
     case 'LIST_REQUEST':
 
-      console.log('LIST_REQUEST ');
-      return state
+      console.log('LIST_REQUEST ',action.payload.step);
+      return {     
+        ...state,
+        checkedAction:false
+      };
     case 'LIST_REQUEST_SUCCESS':
-      console.log('LIST_REQUEST_SUCCESS',state);
+      console.log('LIST_REQUEST_SUCCESS',action.meta.previousAction.payload.step);
 
       let ary = action.payload.data.split(/\r?\n|\r/);
 
@@ -42,41 +46,20 @@ const enlist = (state = initState, action) => {
         var rObj = {};
         rObj.kr = aryText[0];
         rObj.en = aryText[1];
-        //rObj.key = step+'_'+i;
-        rObj.isChecked = state.isChecked.indexOf(rObj.key)>-1;
+        rObj.id = action.meta.previousAction.payload.step+'_'+i;
         return rObj;
      });
 
       return {     
         ...state,
         pending: false,
-        data: action.payload.data,
-        num:undefined
+        data2: reformattedArray,
+        num:undefined,
+        step:action.meta.previousAction.payload.step,
+        checkedAction:false
       };
-    case 'SUFFLE':
-      let newAry = state.data.split(/\r?\n|\r/);
-      let newNumAry = shuffleAry(action.payload.num,newAry.length)
-      console.log('SUFFLE',state);
-      return {
-        ...state,
-        pending: false,
-        num: action.payload.num,
-        numAry:newNumAry
-      };
-    case 'ADD_CHECKED':
-      let newChecked = [...state.isChecked,action.payload.data];
-      return {
-        ...state,
-        pending: false,
-        isChecked:newChecked
-      };
-      case 'REMOVE_CHECKED':
-      let newPosts2 = state.isChecked.filter(chk=>{return chk!==action.payload.data})
-      return {
-        ...state,
-        pending: false,
-        isChecked:newPosts2
-      };
+  
+  
     default:
       return state;
 
@@ -84,8 +67,33 @@ const enlist = (state = initState, action) => {
 
 }
 
+
+const checkList = (state = initState, action) => {
+  switch (action.type){
+
+    case 'ADD_CHECKED':
+      let newChecked = [...state.checkedAry,action.payload.data];
+      return {
+        ...state,
+        checkedAry:newChecked,
+        checkedAction:true
+      };
+      case 'REMOVE_CHECKED':
+      let newPosts2 = state.checkedAry.filter(chk=>{return chk!==action.payload.data})
+      return {
+        ...state,
+        checkedAry:newPosts2,
+        checkedAction:true
+      };
+    default:
+      return state;
+
+  }
+
+}
 const rootReducer = combineReducers({
   enlist,
+  checkList
 })
 
 export default rootReducer

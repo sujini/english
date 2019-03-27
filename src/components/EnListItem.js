@@ -25,11 +25,11 @@ class EnListItem extends Component {
         })
     }
     handleCheck = (e)=>{
-        let key = e.target.parentNode.dataset.key;
+        let id = e.target.parentNode.dataset.id;
         if(e.target.checked ){
-            this.props.addCheck(key);
+            this.props.addCheck(id);
         }else{
-            this.props.removeCheck(key);
+            this.props.removeCheck(id);
         }
        
         
@@ -50,13 +50,13 @@ class EnListItem extends Component {
     }
     render() {
        
-        const {text,index,checked} = this.props;
+        const {text,id,index,checked} = this.props;
       
         
         return (
             <div className="swiper-slide card">                       
                 <div className="card-content" >
-                    <div className="card-inner" data-key = {text.key}>
+                    <div className="card-inner" data-id = {id}>
                         <span className="num">{index}</span>
                         <a href="/" onClick={this.handleClick} className="black-text" style={{display:'block',width:'100%'}}>{text['kr']}</a>
                         <p className="">{this.state.open?text['en']:null}</p>
