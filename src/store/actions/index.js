@@ -1,4 +1,4 @@
-/*
+
 export function listRequest(step){
 
     return {
@@ -20,7 +20,7 @@ export function listRequest(step){
     }
   
 }
-*/
+/*
 import axios from 'axios';
 export const listRequest = step => {
   return async dispatch => {
@@ -42,22 +42,7 @@ export const listRequest = step => {
 }
 
 
-export const listRequest =(step) => {
-  const url = './homework'+step+'.csv';
-  const options = {}
-  const otherOptions = {}
-
-  return dispatch =>
-      axios.get(url, options)
-          .then(responseA => dispatch({ type: RESPONSE_A_SUCCESS }))
-          .then(() => axios.post(url, otherOptions))
-          .then(responseB => dispatch({ type: RESPONSE_B_SUCCESS }))
-          .catch(error => {
-              dispatch({ type: errorActionType, error: error });
-              reject(error);
-          });
-  });
-};
+*/
 
 export function suffle(num){
   return{

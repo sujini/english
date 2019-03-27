@@ -3,7 +3,7 @@ import EnListItem from './EnListItem';
 import Grammar from './Grammar';
 import {connect} from 'react-redux';
 import {listRequest,suffle} from '../store/actions';
-let arys = [];
+let arys = {step:[],data:[]};
 class EnList extends Component{
     
      
@@ -14,7 +14,6 @@ class EnList extends Component{
         suffleAry:[]
     }
     myCallback = (dataFromChild) => {
-        console.log(dataFromChild)
         this.setState({ showGrammar: dataFromChild });
     }
     setNum(_num){
@@ -51,7 +50,10 @@ class EnList extends Component{
     }
     setList(_params){
        
-        arys = [];
+       
+
+     
+        console.log('setList',arys)
         Object.keys(_params).map((key) =>{
             
             let step = _params[key];
@@ -68,10 +70,14 @@ class EnList extends Component{
 
       
     componentWillReceiveProps(nextProps) {
-        console.log(" componentWillReceiveProps     ")
-    
+        console.log(" componentWillReceiveProps");
+       if(nextProps.urlParams.id2===undefined ||
+         (nextProps.urlParams.id2&&this.props.urlParams.id2===undefined)){
+            arys = {step:[],data:[]};
+       }
        
         if(nextProps.urlParams!==this.props.urlParams){
+         
             this.setList(nextProps.urlParams)
         }
      
@@ -91,8 +97,8 @@ class EnList extends Component{
         const {enList,titlestep,checkedAry} = this.props;
 
         const {drawerOpen,showGrammar,suffleAry} = this.state;
-        console.log(suffleAry,enList)
-        let enList2=suffleAry.length?enList.filter((post,index)=>{return (suffleAry.indexOf(index) !== -1)}):enList;
+      
+        const enList2=suffleAry.length?enList.filter((post,index)=>{return (suffleAry.indexOf(index) !== -1)}):enList;
     
         const englishList = enList2.length?(
          
@@ -161,33 +167,25 @@ const shuffleAry = (_num,_len)=>{
    
 
 const mapStateToProps = (state,ownProps) =>{
-  
-    let num = state.enlist.num; 
-    let ary = state.enlist.data2;  
-    let i=0,titlestep='',step='';
+    let ary = state.enlist.data2, step=[];
 
-    console.log("ddddddd",state)
 
-    if(state.enlist.step===ownProps.urlParams.id){
-        arys=[];
-    }
-    
-    if(ary&&arys.length<100){
-        console.log("here",state)
-        arys=arys.concat(ary);
-       
-    }
-    
-  
     Object.keys(ownProps.urlParams).map(key => {
         
-        step = ownProps.urlParams[key];
-        titlestep += (i!==0?'&':'')+step;
-        i++;
+        step = step.concat(ownProps.urlParams[key]);
+      
         return step;
 
     })
-    console.log(arys);
+   
+    if(ary && step.indexOf(state.enlist.step) !== -1 && arys['step'].indexOf(state.enlist.step) === -1){
+     
+        arys['step']=arys['step'].concat(state.enlist.step);
+        
+        arys['data']=arys['data'].concat(ary);
+        
+        
+     }
    
   
     
@@ -195,8 +193,8 @@ const mapStateToProps = (state,ownProps) =>{
     
 
     return {
-        enList:arys,
-        titlestep:titlestep,
+        enList:arys['data'],
+        titlestep:step.join('&'),
         checkedAry:state.checkList.checkedAry
     }
  
