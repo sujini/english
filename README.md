@@ -28,6 +28,9 @@ my-app/
       Home.js
       Homework.js
       Navbar.js  
+    stores/      
+      actions
+      reducers/
     App.css
     App.js
 ```
