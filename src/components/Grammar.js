@@ -48,6 +48,10 @@ class Grammar extends Component{
                         <li><span className="red-text en">I</span><span className="red-text"> 동사 - ,</span><span className="red-text en">but</span><span className="red-text"> 주어 동사 -.</span> : 나는 [동사]했지만, [주어]는 [동사]했다.</li>
                         <li><span className="red-text en">Have/Keep</span><span className="red-text"> + 목적어 + 목적격보어/</span><span className="red-text en">on</span> : [목적어]를 [목적격보어]해놔.</li>
                         <li><span className="red-text en">Can you -/ Could you</span><span className="red-text">(좀더 정중하게) - </span>: -해주실수 있어요?</li>
+                        <li>
+                        <span className="red-text en">have</span><span className="red-text">를 부정:</span>  don't have<br/>
+                        <span className="red-text en">have (has) +p.p</span><span className="red-text">를 부정:</span> have(has) not + p.p 
+                        </li>
                     </ul>
                 </div>
                 </div>
